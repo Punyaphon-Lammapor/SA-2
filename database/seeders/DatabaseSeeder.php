@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ProductStatus;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,10 +15,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UserSeeder::class);
-        $this->call(PostSeeder::class);
-        $this->call(CommentSeeder::class);
-        $this->call(TagSeeder::class);
+        $this->call(MaterialSeeder::class);
+        $this->call(ProvinceSeeder::class);
+        $this->call(OrderStatusSeeder::class);
+        $this->call(ProductStatusSeeder::class);
+        $this->call(ProblemStatusSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 
