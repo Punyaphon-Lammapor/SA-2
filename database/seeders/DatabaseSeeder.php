@@ -20,6 +20,12 @@ class DatabaseSeeder extends Seeder
         $this->call(OrderStatusSeeder::class);
         $this->call(ProductStatusSeeder::class);
         $this->call(ProblemStatusSeeder::class);
+        $this->call(CustomerSeeder::class);
+        $this->call(OrderSeeder::class);
+        $this->call(ProductSeeder::class);
+        $this->call(DeliveryNoteSeeder::class);
+        $this->call(ProblemSeeder::class);
+        $this->call(UseSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 

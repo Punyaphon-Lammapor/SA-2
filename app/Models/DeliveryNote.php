@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProblemStatus extends Model
+class DeliveryNote extends Model
 {
     use HasFactory;
 
-    public function problems() {
-        $this->hasMany(Problem::class);
+    public function order() {
+        $this->belongsTo(Order::class);
     }
 }
