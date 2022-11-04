@@ -34,6 +34,8 @@ require __DIR__.'/auth.php';
 //Route::get('/customers', \App\Http\Controllers\CustomerController::class);
 
 Route::resource('/customers', \App\Http\Controllers\CustomerController::class);
+Route::resource('/materials', \App\Http\Controllers\MaterialController::class);
+
 
 Route::resource('/orders', \App\Http\Controllers\OrderController::class);
 //Route::get('/orders', [\App\Http\Controllers\OrderController::class, 'store']);

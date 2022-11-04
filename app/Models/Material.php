@@ -10,6 +10,6 @@ class Material extends Model
     use HasFactory;
 
     public function uses() {
-        $this->hasMany(Used::class);
+        return $this->hasMany(Used::class);
 }
 }
