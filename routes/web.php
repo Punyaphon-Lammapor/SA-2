@@ -14,19 +14,28 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect()->route('posts.index');
+    return redirect()->route('customers.index');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+//Route::get('/dashboard', function () {
+//    return view('dashboard');
+//})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
 
-Route::post('/posts/{post}/comments/store', [\App\Http\Controllers\PostController::class, 'storeComment'])
-    ->name('posts.comments.store');
+//Route::post('/posts/{post}/comments/store', [\App\Http\Controllers\PostController::class, 'storeComment'])
+//    ->name('posts.comments.store');
+//
+//Route::resource('/posts', \App\Http\Controllers\PostController::class);
+//
+//Route::resource('/tags', \App\Http\Controllers\TagController::class);
 
-Route::resource('/posts', \App\Http\Controllers\PostController::class);
+//Route::get('/customers', \App\Http\Controllers\CustomerController::class);
 
-Route::resource('/tags', \App\Http\Controllers\TagController::class);
+Route::resource('/customers', \App\Http\Controllers\CustomerController::class);
+
+Route::resource('/orders', \App\Http\Controllers\OrderController::class);
+//Route::get('/orders', [\App\Http\Controllers\OrderController::class, 'store']);
+Route::post('/order/{order}/products/store', [\App\Http\Controllers\OrderController::class, 'storeProduct'])
+    ->name('orders.products.store');

@@ -14,11 +14,11 @@ class Order extends Model
     }
 
     public function customer() {
-        $this->belongsTo(Customer::class);
+        return $this->belongsTo(Customer::class);
     }
 
     public function products() {
-        $this->hasMany(Product::class);
+        return $this->hasMany(Product::class);
     }
 
     public function deliveryNote() {

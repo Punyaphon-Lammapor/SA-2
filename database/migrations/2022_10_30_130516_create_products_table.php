@@ -21,7 +21,7 @@ return new class extends Migration
             $table->decimal('width', 3, 2);
             $table->integer('price');
             $table->foreignIdFor(\App\Models\Order::class); //order_id
-            $table->foreignIdFor(\App\Models\ProductStatus::class); //product_ststus_id
+            $table->foreignIdFor(\App\Models\ProductStatus::class); //product_status_id
             $table->char('picture', 20)->nullable();
             $table->timestamps();
         });
