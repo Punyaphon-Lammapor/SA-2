@@ -13,9 +13,16 @@
             @foreach($materials as $material)
                 <a href="{{ route('materials.show', ['material' => $material->id]) }}"
                    class="block p-6 w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 ">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-                        {{ $material->m_name }} : {{ $material->qty }}
+                    @if ($material->qty < 11 )
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-red-500 ">
+                        {{ $material->m_name }} :  {{ $material->qty }}
                     </h5>
+                    @endif
+                        @if ($material->qty >= 11 )
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+                                {{ $material->m_name }} :  {{ $material->qty }}
+                            </h5>
+                        @endif
                 </a>
             @endforeach
         </div>
