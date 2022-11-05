@@ -15,6 +15,11 @@
             Material Quantity: {{ $material->qty }}
         </p>
 
+        <div class="py-3">
+            <a class="app-button" href="{{ route('materials.edit', ['material' => $material->id]) }}">
+                Edit
+            </a>
+        </div>
 
     </article>
 

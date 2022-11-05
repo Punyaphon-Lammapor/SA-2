@@ -50,9 +50,8 @@ class MaterialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Material $material)
     {
-        $material = Material::find($id);
         return view('materials.show', ['material' => $material]);
     }
 
@@ -62,9 +61,9 @@ class MaterialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Material $material)
     {
-        //
+        return view('materials.edit', ['material' => $material]);
     }
 
     /**
@@ -74,9 +73,13 @@ class MaterialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Material $material)
     {
-        //
+        $material->m_name = $request->input('m_name');
+        $material->qty = $request->input('qty');
+
+        $material->save();
+        return redirect()->route('materials.show', ['material' => $material->id]);
     }
 
     /**
@@ -85,8 +88,13 @@ class MaterialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, Material $material)
     {
-        //
+        $m_name = $request->input('m_name');
+        if ($m_name == $material->m_name) {
+            $material->delete();
+            return redirect()->route('materials.index');
+        }
+        return redirect()->back();
     }
 }
