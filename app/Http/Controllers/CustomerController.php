@@ -60,9 +60,8 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Customer $customer)
     {
-        $customer = Customer::find($id);
         return view('customers.show', ['customer' => $customer]);
     }
 
@@ -72,9 +71,11 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, Customer $customer)
     {
-        //
+        $provinces = Province::all();
+
+        return view('customers.edit', ['customer' => $customer, 'provinces' => $provinces]);
     }
 
     /**
@@ -84,9 +85,22 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Customer $customer)
     {
-        //
+        $customer->firstname = $request->input('firstname');
+        $customer->lastname = $request->input('lastname');
+        $customer->address = $request->input('address');
+        $customer->province_id = $request->input('province');
+        $customer->postal_code = $request->input('postal_code');
+        $customer->phone_number = $request->input('phone_number');
+        if($request->has('email')){
+            $customer->email = $request->input('email');
+        } else {
+            $customer->email = null;
+        }
+        $customer->save();
+
+        return redirect()->route('customers.show', ['customer' => $customer->id]);
     }
 
     /**
@@ -98,5 +112,11 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function searchPhoneNumber(Request $request) {
+        $phone_number = $request->input('phone_number');
+        $customer = Customer::where('phone_number', $phone_number);
+        return view('customers.index')->with('customer', $customer);
     }
 }

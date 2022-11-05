@@ -41,6 +41,11 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'product_qty' => ['min:1', 'max:5'],
+            'customer_need_date' => ['required', 'after:tomorrow']
+        ]);
+
         $order = new Order();
         $order->product_qty = $request->input('product_qty');
         $order->order_price = $request->input('order_price');

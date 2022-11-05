@@ -10,10 +10,10 @@ class Customer extends Model
     use HasFactory;
 
     public function province() {
-        $this->belongsTo(Customer::class);
+        return $this->belongsTo(Customer::class);
     }
 
     public function orders() {
-        $this->hasMany(Order::class);
+        return $this->hasMany(Order::class);
     }
 }
