@@ -59,7 +59,8 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        return view('orders.show', ['order' => $order]);
+        $statuses = OrderStatus::all();
+        return view('orders.show', ['order' => $order],['statuses' => $statuses]);
     }
 
     /**
@@ -80,9 +81,17 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Order $order)
     {
         //
+    }
+
+    public function updateStatus(Request $request, Order $order){
+        if($request->input('status')) {
+            $order->order_status_id = $request->input('status');
+            $order->save();
+        }
+            return redirect()->route('orders.show', ['order' => $order->id]);
     }
 
     /**
@@ -113,4 +122,5 @@ class OrderController extends Controller
 
         return redirect()->route('orders.show', ['order' => $order->id]);
     }
+
 }

@@ -24,6 +24,36 @@
 
     @if ($order->products)
         <section class="mt-8 mx-16">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+                @foreach($statuses as $status)
+                    {{--                <a href="{{ route('orders.show', ['order' => $order->id]) }}"--}}
+                    {{--                   class="block p-6 w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 ">--}}
+                    @if ($status->id == $order->order_status_id)
+                        <p id="status" class="text-red-500">
+                            {{ $status->order_status_process }}
+                        </p>
+                    @endif
+{{--                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">--}}
+{{--                        {{ $product->id }} : {{ $product->name }}--}}
+{{--                    </h5>--}}
+                    {{--                </a>--}}
+                @endforeach
+            </h5>
+            <form action="{{ route('orders.updatestatus', $order)}}" method="post">
+                @csrf
+            <select name ="status" id="status" class="form-control border-gray-300 relative z-0 mb-6 w-1/4 group">
+                @foreach($statuses as $status)
+                    @if ($order->order_status_id != null and old('status', $order->order_status_id) == $status->id)
+                        <option value="{{$status->id}}" selected>{{$status->order_status_process}}</option>
+                        @continue ;
+                    @endif
+                    <option value="{{$status->id}}">{{$status->order_status_process}}</option>
+                @endforeach
+            </select>
+                <div class="p-2">
+                    <button type="submits" class="button border border-gray-200 py-2 px-2 rounded">บันทึกสถานะ</button>
+                </div>
+            </form>
             @foreach($order->products as $product)
                 {{--                <a href="{{ route('orders.show', ['order' => $order->id]) }}"--}}
                 {{--                   class="block p-6 w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 ">--}}

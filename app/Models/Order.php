@@ -10,7 +10,7 @@ class Order extends Model
     use HasFactory;
 
     public function orderStatus() {
-        $this->belongsTo(OrderStatus::class);
+        return $this->belongsTo(OrderStatus::class);
     }
 
     public function customer() {
