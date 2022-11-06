@@ -55,12 +55,12 @@
                 </div>
             </form>
             @foreach($order->products as $product)
-                {{--                <a href="{{ route('orders.show', ['order' => $order->id]) }}"--}}
-                {{--                   class="block p-6 w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 ">--}}
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-                    {{ $product->id }} : {{ $product->name }}
-                </h5>
-                {{--                </a>--}}
+                <a href=""
+                   class="block p-6 w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 ">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+                        {{ $product->id }} : {{ $product->name }}
+                    </h5>
+                </a>
             @endforeach
         </section>
     @endif
@@ -155,22 +155,6 @@
         </section>
 
     @endif
-
-{{--    add product--}}
-{{--    <section class="mx-16 mt-8">--}}
-{{--        <form action="{{ route('posts.comments.store', ['post' => $post->id]) }}" method="post">--}}
-{{--            @csrf--}}
-{{--            <div>--}}
-{{--                <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your message</label>--}}
-{{--                <textarea name="message" id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your message..."></textarea>--}}
-{{--            </div>--}}
-{{--            <div class="mt-2">--}}
-{{--                <button type="submit" class="app-button">Comment</button>--}}
-{{--            </div>--}}
-
-{{--        </form>--}}
-{{--    </section>--}}
-
 
 @endsection
 

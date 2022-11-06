@@ -3,7 +3,7 @@
 @section('content')
     <section class="mx-8">
         <h1 class="text-3xl mb-6">
-            Add new Oeder
+            Add new Order
         </h1>
 
         <form action="{{ route('orders.store') }}" method="post">
@@ -59,10 +59,11 @@
                         {{ $errors->first('customer_need_date') }}
                     </p>
                 @endif
-                <input type="date" name="customer_need_date" id="order_price"
+                <input type="date" name="customer_need_date" id="customer_need_date"
                        class="bg-gray-50 border @if($errors->has('customer_need_date')) border-red-300 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                        value="{{ old('customer_need_date') }}"
-                       placeholder="" required>
+                       placeholder="" required tomorrow>
+
             </div>
 
             <div>
