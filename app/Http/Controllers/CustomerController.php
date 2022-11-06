@@ -13,9 +13,14 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $customers = Customer::latest()->paginate(50);
+//        $search = $request->input('search') ?? "";
+//        if($search != "") {
+//            $customers = Customer::where('firstname', 'LIKE', "%search%")->orWhere('phone_number', 'LIKE', "%search%")->get();
+//        } else {
+            $customers = Customer::latest()->paginate(50);
+//        }
         return view('customers.index', ['customers' => $customers]);
     }
 
