@@ -153,7 +153,26 @@
 
             </form>
         </section>
-
+    @endif
+    @if($order->problems->count() > 0)
+    <div class="relative py-4">
+        <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-b border-gray-300"></div>
+        </div>
+        <div class="relative flex justify-center">
+            <span class="bg-white px-4 text-sm text-gray-500">Problem ({{ $order->problems->count() }})</span>
+        </div>
+    </div>
+    <section class="mt-8 mx-16">
+            @foreach($order->problems as $problem)
+                <a href=""
+                   class="block p-6 w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 ">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+                        {{ $problem->create_at }} : {{ $problem->problem_description }}
+                    </h5>
+                </a>
+            @endforeach
+    </section>
     @endif
 
 @endsection
