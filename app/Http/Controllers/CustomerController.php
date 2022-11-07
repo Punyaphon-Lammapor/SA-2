@@ -55,14 +55,6 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-
-        $validated = $request->validate([
-            'firstname' => 'alpha',
-            'lastname' => 'alpha',
-            'phone_number' => 'required|unique:customers',
-            'email' => 'unique:customers',
-        ]);
-
         $customer = new Customer();
         $customer->firstname = $request->input('firstname');
         $customer->lastname = $request->input('lastname');
@@ -112,12 +104,6 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        $validated = $request->validate([
-            'firstname' => 'alpha',
-            'lastname' => 'alpha',
-            'phone_number' => 'required|unique:customers',
-            'email' => 'unique:customers',
-        ]);
         $customer->firstname = $request->input('firstname');
         $customer->lastname = $request->input('lastname');
         $customer->address = $request->input('address');
