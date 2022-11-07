@@ -34,6 +34,7 @@
                     @endif
                 @endforeach
             </h5>
+            @if($order->order_status_id != null and old('status', $order->order_status_id) != 4)
             <form action="{{ route('orders.updatestatus', $order)}}" method="post">
                 @csrf
             <select name ="status" id="status" class="form-control border-gray-300 relative z-0 mb-6 w-1/4 group">
@@ -49,6 +50,7 @@
                     <button type="submits" class="button border border-gray-200 py-2 px-2 rounded">บันทึกสถานะ</button>
                 </div>
             </form>
+            @endif
             @foreach($order->products as $product)
                 <a href=""
                    class="block p-6 w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 ">
