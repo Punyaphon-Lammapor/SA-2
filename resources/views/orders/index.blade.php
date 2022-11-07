@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+    @auth
     <h1 class="mt-8 text-center text-3xl font-bold">All Orders</h1>
     <section class="mx-8">
         @if(Auth::user()->role == 'OWNER')
@@ -46,4 +47,5 @@
             @endforeach
         </div>
     </section>
+    @endauth
 @endsection

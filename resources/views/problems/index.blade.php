@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+    @auth
     <section class="mx-8">
         <h1 class="text-3xl mx-4 mt-6">
             All problems({{$problems->count()}})
@@ -47,4 +48,5 @@
             @endforeach
         </div>
     </section>
+    @endauth
 @endsection
