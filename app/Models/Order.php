@@ -22,10 +22,10 @@ class Order extends Model
     }
 
     public function deliveryNote() {
-        $this->hasOne(DeliveryNote::class);
+        return $this->hasOne(DeliveryNote::class);
     }
 
     public function problems() {
-        $this->hasMany(Problem::class);
+        return $this->hasMany(Problem::class);
     }
 }
