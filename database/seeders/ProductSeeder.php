@@ -23,7 +23,6 @@ class ProductSeeder extends Seeder
         $product1->height = 7;
         $product1->width = 0.20;
         $product1->order_id = Order::find(1)->id;
-        $product1->product_status_id = ProductStatus::where('product_status_process', 'เสร็จสิ้น')->first()->id;
         $product1->save();
 
         $product2 = new Product();
@@ -32,7 +31,6 @@ class ProductSeeder extends Seeder
         $product2->height = 6;
         $product2->width = 0.20;
         $product2->order_id = Order::find(2)->id;
-        $product2->product_status_id = ProductStatus::where('product_status_process', 'เสร็จสิ้น')->first()->id;
         $product2->save();
 
         $product3 = new Product();
@@ -42,7 +40,6 @@ class ProductSeeder extends Seeder
         $product3->height = 9;
         $product3->width = 0.20;
         $product3->order_id = Order::find(3)->id;
-        $product3->product_status_id = ProductStatus::where('product_status_process', 'เสร็จสิ้น')->first()->id;
         $product3->save();
 
         $product4 = new Product();
@@ -52,7 +49,6 @@ class ProductSeeder extends Seeder
         $product4->height = 9;
         $product4->width = 0.20;
         $product4->order_id = Order::find(3)->id;
-        $product4->product_status_id = ProductStatus::where('product_status_process', 'เสร็จสิ้น')->first()->id;
         $product4->save();
     }
 }

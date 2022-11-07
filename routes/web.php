@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect()->route('customers.index');
+    return redirect()->route('orders.index');
 });
 
 //Route::get('/dashboard', function () {
@@ -42,7 +42,6 @@ Route::resource('/problems', \App\Http\Controllers\ProblemController::class);
 Route::get('/search/', [\App\Http\Controllers\CustomerController::class, 'search'])->name('search');
 //Route::get('/orders/report', [\App\Http\Controllers\OrderController::class, 'reportOrder'])->name('orders.report');
 Route::resource('/orders', \App\Http\Controllers\OrderController::class);
-
 Route::post('/orders/{order}/products/store', [\App\Http\Controllers\OrderController::class, 'storeProduct'])
     ->name('orders.products.store');
 

@@ -8,8 +8,20 @@
         </h1>
 
         <p>
-            Address : {{ $customer->address }} {{ $customer->postal_code }}
+            Address : {{ $customer->address }} {{ $customer->province->province_name }} {{ $customer->postal_code }}
         </p>
+        <p>Phone Number : {{ $customer->phone_number }}</p>
+        @if($customer->email != "")
+            <p>Email : {{ $customer->email }}</p>
+        @else
+            <p>Email : - </p>
+        @endif
+        <br>
+        <div>
+            <a class="app-button" href="{{ route('customers.edit', ['customer' => $customer->id]) }}">
+                Edit this Customer
+            </a>
+        </div>
 
         <div class="relative py-4">
             <div class="absolute inset-0 flex items-center">
@@ -35,12 +47,6 @@
         </section>
     @endif
 
-    <br>
-    <div>
-        <a class="app-button" href="{{ route('customers.edit', ['customer' => $customer->id]) }}">
-            Edit this Customer
-        </a>
-    </div>
 
 @endsection
 
