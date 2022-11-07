@@ -14,15 +14,9 @@
                 <label for="m_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Name
                 </label>
-                @if ($errors->has('m_name'))
-                    <p class="text-red-500">
-                        {{ $errors->first('m_name') }}
-                    </p>
-                @endif
-                <input type="text" name="m_name" id="m_name"
-                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       value="{{ old('m_name', $material->m_name) }}"
-                       placeholder="" required>
+                <label for="m_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    {{$material->m_name}}
+                </label>
             </div>
 
             <div class="relative z-0 mb-6 w-full group">
@@ -34,9 +28,10 @@
                         {{ $errors->first('qty') }}
                     </p>
                 @endif
-                <textarea rows="4" type="text" name="qty" id="qty"
-                          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          required >{{ old('qty', $material->qty) }}</textarea>
+                <input type="number" name="qty" id="qty" min="1" max="30"
+                       class="bg-gray-50 border @if($errors->has('qty')) border-red-300 @else border-gray-300 @endif border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       value="{{ old('qty', $material->qty) }}"
+                       placeholder="" required>
             </div>
 
             <div>
@@ -46,40 +41,40 @@
         </form>
     </section>
 
-    @can('delete', $material)
-        <section class="mx-8 mt-16">
-            <div class="relative py-4">
-                <div class="absolute inset-0 flex items-center">
-                    <div class="w-full border-b border-red-300"></div>
-                </div>
-                <div class="relative flex justify-center">
-                    <span class="bg-white px-4 text-sm text-red-500">Danger Zone</span>
-                </div>
-            </div>
+{{--    @can('delete', $material)--}}
+{{--        <section class="mx-8 mt-16">--}}
+{{--            <div class="relative py-4">--}}
+{{--                <div class="absolute inset-0 flex items-center">--}}
+{{--                    <div class="w-full border-b border-red-300"></div>--}}
+{{--                </div>--}}
+{{--                <div class="relative flex justify-center">--}}
+{{--                    <span class="bg-white px-4 text-sm text-red-500">Danger Zone</span>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
-            <div>
-                <h3 class="text-red-600 mb-4 text-2xl">
-                    Delete this Material
-                    <p class="text-gray-800 text-xl">
-                        Once you delete this, there is no going back. Please be certain.
-                    </p>
-                </h3>
+{{--            <div>--}}
+{{--                <h3 class="text-red-600 mb-4 text-2xl">--}}
+{{--                    Delete this Material--}}
+{{--                    <p class="text-gray-800 text-xl">--}}
+{{--                        Once you delete this, there is no going back. Please be certain.--}}
+{{--                    </p>--}}
+{{--                </h3>--}}
 
-                <form action="{{ route('materials.destroy', ['material' => $material->id]) }}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <div class="relative z-0 mb-6 w-full group">
-                        <label for="m_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                            Delete Material
-                        </label>
-                        <input type="text" name="m_name" id="m_name"
-                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                               placeholder="" required>
-                    </div>
-                    <button class="app-button red" type="submit">DELETE</button>
-                </form>
-            </div>
-        </section>
-    @endcan
+{{--                <form action="{{ route('materials.destroy', ['material' => $material->id]) }}" method="post">--}}
+{{--                    @csrf--}}
+{{--                    @method('DELETE')--}}
+{{--                    <div class="relative z-0 mb-6 w-full group">--}}
+{{--                        <label for="m_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">--}}
+{{--                            Delete Material--}}
+{{--                        </label>--}}
+{{--                        <input type="text" name="m_name" id="m_name"--}}
+{{--                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"--}}
+{{--                               placeholder="" required>--}}
+{{--                    </div>--}}
+{{--                    <button class="app-button red" type="submit">DELETE</button>--}}
+{{--                </form>--}}
+{{--            </div>--}}
+{{--        </section>--}}
+{{--    @endcan--}}
 
 @endsection

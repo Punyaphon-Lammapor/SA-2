@@ -19,7 +19,7 @@ class ProblemController extends Controller
         $orders = Order::all();
         $statuses = ProblemStatus::all();
         $problems = Problem::get();
-        return view('problemreports.index', ['orders' => $orders,'problems' => $problems,'statuses' => $statuses]);
+        return view('problems.index', ['orders' => $orders,'problems' => $problems,'statuses' => $statuses]);
     }
 
     /**

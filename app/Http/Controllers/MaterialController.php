@@ -36,6 +36,10 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'm_name' => 'alpha|unique:materials',
+            'qty' => ['min:1', 'max:30']
+        ]);
         $material = new Material();
         $material->m_name = $request->input('m_name');
         $material->qty = $request->input('qty');
@@ -75,7 +79,10 @@ class MaterialController extends Controller
      */
     public function update(Request $request, Material $material)
     {
-        $material->m_name = $request->input('m_name');
+        $validated = $request->validate([
+            'qty' => ['min:1', 'max:30']
+        ]);
+
         $material->qty = $request->input('qty');
 
         $material->save();

@@ -20,8 +20,8 @@ return new class extends Migration
             $table->char('address', 100);
             $table->foreignIdFor(\App\Models\Province::class); //province_id
             $table->string('postal_code', 5);
-            $table->string('phone_number', 10);
-            $table->char('email', 30)->nullable();
+            $table->string('phone_number', 10)->unique();
+            $table->char('email', 30)->unique()->nullable();
             $table->timestamps();
         });
     }
