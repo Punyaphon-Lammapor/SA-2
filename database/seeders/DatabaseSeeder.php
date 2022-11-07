@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MaterialSeeder::class);
         $this->call(ProvinceSeeder::class);
         $this->call(OrderStatusSeeder::class);
-        $this->call(ProductStatusSeeder::class);
         $this->call(ProblemStatusSeeder::class);
         $this->call(CustomerSeeder::class);
         $this->call(OrderSeeder::class);
