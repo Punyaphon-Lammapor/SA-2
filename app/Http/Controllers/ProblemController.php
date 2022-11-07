@@ -16,9 +16,10 @@ class ProblemController extends Controller
      */
     public function index()
     {
+        $orders = Order::all();
         $statuses = ProblemStatus::all();
         $problems = Problem::get();
-        return view('problems.index', ['problems' => $problems,'statuses' => $statuses]);
+        return view('problemreports.index', ['orders' => $orders,'problems' => $problems,'statuses' => $statuses]);
     }
 
     /**

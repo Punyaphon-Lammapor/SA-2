@@ -36,6 +36,7 @@ require __DIR__.'/auth.php';
 Route::resource('/customers', \App\Http\Controllers\CustomerController::class);
 Route::resource('/materials', \App\Http\Controllers\MaterialController::class);
 Route::resource('/reports', \App\Http\Controllers\ReportController::class);
+Route::resource('/problemreports', \App\Http\Controllers\ProblemReportController::class);
 Route::resource('/problems', \App\Http\Controllers\ProblemController::class);
 
 Route::get('/search', [\App\Http\Controllers\CustomerController::class, 'searchPhoneNumber'])->name('search');
