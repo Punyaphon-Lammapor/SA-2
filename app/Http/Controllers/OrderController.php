@@ -114,7 +114,7 @@ class OrderController extends Controller
     public function storeProduct(Request $request, Order $order)
     {
         $product = new Product();
-        $product->name = $request->input('name');
+        $product->name = $request->input('product');
         if($request->has('description')){
             $product->description = $request->input('description');
         } else {
