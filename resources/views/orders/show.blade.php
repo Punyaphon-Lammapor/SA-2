@@ -1,4 +1,4 @@
-{{-- resources/views/posts/show.blade.php --}}
+
 @extends('layouts.main')
 
 @section('content')
@@ -10,6 +10,10 @@
         <p>
             Order By {{ $order->customer->firstname }} {{ $order->customer->lastname }}
         </p>
+        <p> Quantity : {{ $order->product_qty }}</p>
+        <p>Order Price : {{ $order->order_price }}฿</p>
+        <p>Customer Need Date : {{ $order->customer_need_date }}</p>
+
         @if ($order->products)
             <section class="mt-8 mx-16">
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
@@ -64,22 +68,14 @@
         <section class="mx-16 mt-8">
             <form action="{{ route('orders.products.store', ['order' => $order->id]) }}" method="post">
                 @csrf
-
-                <div class="relative z-0 mb-6 w-full group">
-                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                        Name
+                <div>
+                    <label for="product" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        Product
                     </label>
-                    @if ($errors->has('name'))
-                        <p class="text-red-500">
-                            {{ $errors->first('name') }}
-                        </p>
-                    @endif
-                    <input type="text" name="name" id="name"
-                           class="bg-gray-50 border
-                       @if($errors->has('name'))
-                       border-red-300 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                           value="{{ old('name') }}"
-                           placeholder="" required>
+                    <select name="product" id="product">
+                        <option value="มังกร">มังกร</option>
+                        <option value="มังกรประดับทีกง" selected>มังกรประดับทีกง</option>
+                    </select>
                 </div>
 
                 <div class="relative z-0 mb-6 w-full group">
@@ -159,8 +155,12 @@
                 <span class="bg-white px-4 text-sm text-gray-500">Delivery Note</span>
             </div>
         </div>
+        <div class="mx-8">
+            <p>Address: {{ $order->customer->address }} {{ $order->customer->province->province_name }} {{ $order->customer->postal_code }}</p>
+            <p>Phone Number: {{ $order->customer->phone_number }}</p>
+        </div>
         <section class="mt-8 mx-16">
-            <form action="{{ route('orders.delivery.note.store', ['order' => $order->id]) }}" method="post">
+            <form action="{{ route('orders.delivery.note.store', ['order' => $order->id]) }}" method="post" enctype="multipart/form-data">
                 @csrf
             <div class="relative z-0 mb-6 w-full group">
                 <label for="delivery_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -191,6 +191,15 @@
                        value="{{ old('delivery_description') }}"
                        placeholder="" required>
             </div>
+                <div class="add-image-button">
+                    <div>
+                        <label class="create-text">Picture :</label>
+                        <input class="create-text" type="file" name="image" class="form-control">
+                        @error('image')
+                        <div  class="alert alert-danger mt-1 mb-1">{{ $message }} </div>
+                        @enderror
+                    </div>
+                </div>
                 <div class="mt-2">
                     <button type="submit" class="app-button">Submit</button>
                 </div>
@@ -209,8 +218,13 @@
             </div>
         </div>
         <div class="mx-8">
+            <p>Address: {{ $order->customer->address }} {{ $order->customer->province->province_name }} {{ $order->customer->postal_code }}</p>
+            <p>Phone Number: {{ $order->customer->phone_number }}</p>
             <p>Delivery Date : {{ $order->deliveryNote->delivery_date }}</p>
             <p>Description : {{ $order->deliveryNote->delivery_description }}</p>
+            @if($order->deliveryNote->image != "")
+                <img src="{{ asset("/storage/images/".$order->deliveryNote->image) }}" width="20%" height="20%">
+            @endif
         </div>
     @endif
 

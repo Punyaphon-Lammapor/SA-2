@@ -114,7 +114,7 @@ class OrderController extends Controller
     public function storeProduct(Request $request, Order $order)
     {
         $product = new Product();
-        $product->name = $request->input('name');
+        $product->name = $request->input('product');
         if($request->has('description')){
             $product->description = $request->input('description');
         } else {
@@ -132,7 +132,8 @@ class OrderController extends Controller
     public function storeDeliveryNote(Request $request, Order $order) {
 
         $validated = $request->validate([
-            'delivery_date' => ['required', 'before:tomorrow']
+            'delivery_date' => ['required', 'before:tomorrow'],
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         $delivery_note = new DeliveryNote();
@@ -141,6 +142,12 @@ class OrderController extends Controller
             $delivery_note->delivery_description = $request->input('delivery_description');
         } else {
             $delivery_note->delivery_description = null;
+        }
+
+        if($request->hasFile('image')) {
+            $filename = $request->file('image')->getClientOriginalName();
+            $request->image->move(storage_path('app/public/images'), $filename);
+            $delivery_note->image = $filename;
         }
         $order->deliveryNote()->save($delivery_note);
 

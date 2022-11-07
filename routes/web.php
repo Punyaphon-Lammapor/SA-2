@@ -39,7 +39,7 @@ Route::resource('/reports', \App\Http\Controllers\ReportController::class);
 Route::resource('/problemreports', \App\Http\Controllers\ProblemReportController::class);
 Route::resource('/problems', \App\Http\Controllers\ProblemController::class);
 
-Route::get('/search', [\App\Http\Controllers\CustomerController::class, 'searchPhoneNumber'])->name('search');
+Route::get('/search/', [\App\Http\Controllers\CustomerController::class, 'search'])->name('search');
 //Route::get('/orders/report', [\App\Http\Controllers\OrderController::class, 'reportOrder'])->name('orders.report');
 Route::resource('/orders', \App\Http\Controllers\OrderController::class);
 

@@ -52,7 +52,7 @@
 
             <div class="relative z-0 mb-6 w-full group">
                 <label for="customer_need_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                    Price
+                    Customer Need Date
                 </label>
                 @if ($errors->has('customer_need_date'))
                     <p class="text-red-500">
