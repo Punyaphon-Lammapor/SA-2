@@ -1,5 +1,5 @@
 <aside class="col-12 col-md-2 p-0 bg-dark flex-shrink-1">
-<nav class="flex flex-col bg-white rounded">
+<nav class="flex flex-col bg-orange-400 rounded">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
         <a href="{{ url('/') }}" class="flex items-center">
             <span class="self-center ml-4 text-3xl font-bold whitespace-nowrap">DRAGON</span>
