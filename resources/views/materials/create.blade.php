@@ -2,11 +2,11 @@
 
 @section('content')
     <section class="mx-8">
-        <h1 class="text-3xl mb-6">
+        <h1 class="text-center font-bold text-3xl mt-8">
             Add New Material
         </h1>
 
-        <form action="{{ route('materials.store') }}" method="post">
+        <form class="mt-8" action="{{ route('materials.store') }}" method="post">
             @csrf
 
             <div class="relative z-0 mb-6 w-full group">
@@ -40,7 +40,7 @@
             </div>
 
 
-            <div>
+            <div class="flex justify-end mr-2">
                 <button class="app-button" type="submit">Create</button>
             </div>
         </form>

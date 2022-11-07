@@ -2,8 +2,8 @@
 
 @section('content')
     <section class="mx-8">
-        <h1 class="text-3xl mb-6">
-            Edit post
+        <h1 class="text-center font-bold text-3xl mt-8">
+            Edit Material
         </h1>
 
         <form action="{{ route('materials.update', ['material' => $material->id]) }}" method="post" enctype="multipart/form-data">
