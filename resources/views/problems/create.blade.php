@@ -15,7 +15,7 @@
                 </label>
                 <select name="order_id" id = 'order_id' class="block w-500 mt-1 create-tag-contener" required>
                     @foreach ($orders as $order)
-                        <option value="{{ $order->id }}">{{ $order->customer->firstname }} {{ $order->customer->lastname }}</option>
+                        <option value="{{ $order->id }}">{{ $order->id }}</option>
                     @endforeach
                 </select>
             </div>

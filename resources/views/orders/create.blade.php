@@ -66,7 +66,7 @@
 
             </div>
 
-            <div>
+            <div class="mr-2 flex justify-end">
                 <button class="app-button" type="submit">Create</button>
             </div>
         </form>

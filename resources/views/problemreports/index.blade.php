@@ -12,10 +12,10 @@
     {{--        </div>--}}
     {{--    @endif--}}
     <div>
-        <section class="mx-8">
-
-            <table class="table-auto border-collapse">
-                <thead>
+        <h1 class="mt-8 text-center text-3xl font-bold">All Problems</h1>
+        <section class="flex justify-center mx-8">
+            <table class="mt-8 table-auto border-slate-800 p-4" style="width: 100%">
+                <thead class="bg-orange-400">
                 <tr>
                     <th class="border border-slate-300">Problem NO.</th>
                     <th class="border border-slate-300">Problem Description</th>
@@ -23,8 +23,6 @@
                     <th class="border border-slate-300">Customer Phone</th>
                     <th class="border border-slate-300">Address</th>
                     <th class="border border-slate-300">Status</th>
-
-
                 </tr>
                 </thead>
                 <tbody>

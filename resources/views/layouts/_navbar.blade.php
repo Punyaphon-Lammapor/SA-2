@@ -1,9 +1,9 @@
 <aside class="col-12 col-md-2 p-0 bg-dark flex-shrink-1">
-<nav class="flex flex-col bg-white rounded">
-    <div class="container flex flex-wrap justify-between items-center mx-auto">
-        <a href="{{ url('/') }}" class="flex items-center">
-            <span class="self-center ml-4 text-3xl font-bold whitespace-nowrap">DRAGON</span>
-        </a>    
+    <nav class="flex flex-col bg-orange-400 rounded">
+        <div class="container flex flex-wrap justify-between items-center mx-auto">
+            <a href="{{ url('/') }}" class="flex items-center">
+                <span class="self-center ml-4 text-3xl font-bold whitespace-nowrap">DRAGON</span>
+            </a>    
         <button data-collapse-toggle="navbar-default" type="button"
             class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
             aria-controls="navbar-default" aria-expanded="false">

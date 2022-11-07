@@ -3,19 +3,21 @@
 
 @section('content')
     <article class="mx-8">
-        <h1 class="text-3xl mb-1">
+        <h1 class="mt-8 text-center font-bold text-3xl mb-1">
             Customer Name : {{ $customer->firstname }} {{ $customer->lastname }}
         </h1>
 
-        <p>
-            Address : {{ $customer->address }} {{ $customer->province->province_name }} {{ $customer->postal_code }}
-        </p>
-        <p>Phone Number : {{ $customer->phone_number }}</p>
-        @if($customer->email != "")
+        <div class="mt-8">
+            <p>
+                Address : {{ $customer->address }} {{ $customer->province->province_name }} {{ $customer->postal_code }}
+            </p>
+            <p>Phone Number : {{ $customer->phone_number }}</p>
+            @if($customer->email != "")
             <p>Email : {{ $customer->email }}</p>
-        @else
+            @else
             <p>Email : - </p>
-        @endif
+            @endif
+        </div>
         <br>
         <div>
             <a class="app-button" href="{{ route('customers.edit', ['customer' => $customer->id]) }}">
@@ -28,7 +30,7 @@
                 <div class="w-full border-b border-gray-300"></div>
             </div>
             <div class="relative flex justify-center">
-                <span class="bg-white px-4 text-sm text-gray-500">Order ({{ $customer->orders->count() }})</span>
+                <span class="font-bold bg-white px-4 text-sm text-gray-500">Order ({{ $customer->orders->count() }})</span>
             </div>
         </div>
 
@@ -39,7 +41,7 @@
             @foreach($customer->orders as $order)
                 <a href="{{ route('orders.show', ['order' => $order->id]) }}"
                    class="block p-6 w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 ">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+                    <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 ">
                         {{ $order->id }} : {{ $order->order_price }}
                     </h5>
                 </a>
