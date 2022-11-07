@@ -43,6 +43,7 @@ html {
 */
 
 body {
+  background-color: bisque;
   margin: 0; /* 1 */
   line-height: inherit; /* 2 */
 }

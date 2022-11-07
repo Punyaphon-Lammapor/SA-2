@@ -5,13 +5,14 @@
 <div>
 
     <div class="mt-4 mx-4">
-        <p class="font-bold">Back</p><a href="{{ url()->previous() }}" class="previous round">&#8249;</a>
+        <a href="{{ url()->previous() }}" class="previous round">&#8249;</a>
     </div>
-    <article class="items-center mt-4 mx-8">
+    <article class="mt-8 mx-8">
         <h1 class="text-center text-2xl font-bold mb-1">
             Order Number : {{ $order->id }}
         </h1>
-        <div class="border border-slate-600 p-4 mt-2 font-bold">
+
+        <div class="">
             <p>
                 Order By {{ $order->customer->firstname }} {{ $order->customer->lastname }}
             </p>
@@ -20,12 +21,9 @@
             <p>Customer Need Date : {{ $order->customer_need_date }}</p>
         </div>
 
-
-
-
         @if ($order->products)
-        <section class="mt-8 mx-16 flex justify-end">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 text-right">
+        <section class="mt-8 mx-16">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
                     @foreach($statuses as $status)
 
                         @if ($status->id == $order->order_status_id)
@@ -36,7 +34,7 @@
                         @endforeach
                     </h5>
                     @if($order->order_status_id != null and old('status', $order->order_status_id) != 4)
-                    <form class="text-right" action="{{ route('orders.updatestatus', $order)}}" method="post">
+                    <form action="{{ route('orders.updatestatus', $order)}}" method="post">
                         @csrf
                         <select name ="status" id="status" class="form-control border-gray-300 relative z-0 mb-6 w-1/4 group">
                             @foreach($statuses as $status)
@@ -56,10 +54,10 @@
             </section>
     </article>
 
-    <div class="mx-8">
+    <div>
         @foreach($order->products as $product)
-        <div class="justify-center p-6 bg-white rounded-lg border border-gray-200">
-            <h5 class="mb-2 font-bold tracking-tight text-gray-900 ">
+        <div class="justify-center block p-6 w-60 bg-white rounded-lg border border-gray-200 shadow-md ">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
                 Product ID : {{ $product->id }}  {{ $product->name }}
             </h5>
             <p>Height : {{ $product->height }}    |    Width : {{ $product->width }}</p>
@@ -228,7 +226,7 @@
                 <div class="w-full border-b border-gray-300"></div>
             </div>
             <div class="relative flex justify-center">
-                <span class="font-bold bg-white px-4 text-sm text-gray-500">Delivery Note</span>
+                <span class="bg-white px-4 text-sm text-gray-500">Delivery Note</span>
             </div>
         </div>
         <div class="mx-8">
@@ -256,7 +254,7 @@
                     <div class="w-full border-b border-gray-300"></div>
                 </div>
                 <div class="relative flex justify-center">
-                    <span class="font-bold bg-white px-4 text-sm text-gray-500">Problem ({{ $order->problems->count() }})</span>
+                    <span class="bg-white px-4 text-sm text-gray-500">Problem ({{ $order->problems->count() }})</span>
                 </div>
             </div>
             <section class="mx-16">
