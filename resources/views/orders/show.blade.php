@@ -26,17 +26,12 @@
         <section class="mt-8 mx-16">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
                 @foreach($statuses as $status)
-                    {{--                <a href="{{ route('orders.show', ['order' => $order->id]) }}"--}}
-                    {{--                   class="block p-6 w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 ">--}}
+
                     @if ($status->id == $order->order_status_id)
                         <p id="status" class="text-red-500">
                             {{ $status->order_status_process }}
                         </p>
                     @endif
-{{--                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">--}}
-{{--                        {{ $product->id }} : {{ $product->name }}--}}
-{{--                    </h5>--}}
-                    {{--                </a>--}}
                 @endforeach
             </h5>
             <form action="{{ route('orders.updatestatus', $order)}}" method="post">
@@ -59,7 +54,10 @@
                    class="block p-6 w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 ">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
                         {{ $product->id }} : {{ $product->name }}
+
+
                     </h5>
+
                 </a>
             @endforeach
         </section>
