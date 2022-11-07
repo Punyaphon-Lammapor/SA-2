@@ -3,11 +3,13 @@
 @section('content')
     <h1 class="mt-8 text-center text-3xl font-bold">All Orders</h1>
     <section class="mx-8">
+        @if(Auth::user()->role == 'OWNER')
         <div class="mt-4 relative flex justify-end">
             <a class="app-button" href="{{ route('orders.create') }}">
                 Add new Order
             </a>
         </div>
+        @endif
             <div class="relative px-4">
                 <span class="font-bold px-4 text-md text-gray-800">จำนวน {{$orders->count()}} รายการ</span>
             </div>

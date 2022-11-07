@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id(); // primary key 'id' int auto_increment
             $table->string('name'); // varchar(255)
             $table->string('email')->unique(); // chaining method
+            $table->string('role')->default('EMPLOYEE');
             $table->timestamp('email_verified_at')->nullable(); // timestamp/DATETIME
             $table->string('password'); // varchar(60)
             $table->rememberToken(); // 'remember_token'

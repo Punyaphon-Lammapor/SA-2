@@ -4,8 +4,8 @@
 @section('content')
 <div>
 
-    <div class="mt-4 mx-4">
-        <p class="font-bold">Back</p><a href="{{ url()->previous() }}" class="previous round">&#8249;</a>
+    <div class="mt-4 mx-4" >
+        <a  class="previous round">&#8249;</a><a class="font-bold" href="{{ url()->previous() }}">Back</a>
     </div>
     <article class="items-center mt-4 mx-8">
         <h1 class="text-center text-3xl font-bold mb-1">
@@ -36,7 +36,7 @@
                     @if($order->order_status_id != null and old('status', $order->order_status_id) != 4)
                     <form class="text-right" action="{{ route('orders.updatestatus', $order)}}" method="post">
                         @csrf
-                        <select name ="status" id="status" class="form-control border-gray-300 relative z-0 mb-6 w-1/4 group">
+                        <select name ="status" id="status" class="form-control border-gray-300 relative z-0 mb-6 px-2 group">
                             @foreach($statuses as $status)
                                 @if ($order->order_status_id != null and old('status', $order->order_status_id) == $status->id)
                                 <option value="{{$status->id}}" selected>{{$status->order_status_process}}</option>
@@ -70,7 +70,7 @@
         </div>
         @endforeach
     </div>
-    
+
     <div>
     @if($order->products->count() < $order->product_qty)
     <section class="mx-16 mt-8">
@@ -100,7 +100,7 @@
                         value="{{ old('description') }}"
                            placeholder="">
                 </div>
-                
+
                 <div class="relative z-0 mb-6 w-full group">
                     <label for="height" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                         Height
@@ -130,7 +130,7 @@
                     value="{{ old('width') }}"
                     placeholder="" required>
                 </div>
-                
+
                 <div class="relative z-0 mb-6 w-full group">
                     <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                         Price
@@ -154,7 +154,8 @@
         </section>
         @endif
         </div>
-        
+
+    @if(Auth::user()->role == 'DELIVERY')
         <div>
         @if($order->orderStatus->order_status_process == 'รอจัดส่ง')
         <div class="relative py-4">
@@ -185,7 +186,7 @@
                     class="bg-gray-50 border @if($errors->has('delivery_date')) border-red-300 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     value="{{ old('delivery_date') }}"
                     placeholder="" required >
-                    
+
                 </div>
                 <div class="relative z-0 mb-6 w-full group">
                     <label for="delivery_description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -214,10 +215,11 @@
                     <button type="submit" class="app-button">Submit</button>
                 </div>
             </form>
-            
+
         </section>
         @endif
         </div>
+    @endif
 
         <div>
         @if($order->orderStatus->order_status_process == 'จัดส่งสำเร็จ')
@@ -238,7 +240,7 @@
             @else
             <p>Description : - </p>
             @endif
-            
+
             @if($order->deliveryNote->image != "")
             <img src="{{ asset("/storage/images/".$order->deliveryNote->image) }}" width="20%" height="20%">
             @endif

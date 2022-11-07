@@ -47,18 +47,18 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    public function isAdmin()
+    public function isOwner()
     {
-        return $this->role === 'ADMIN';
+        return $this->role === 'OWNER';
     }
 
-    public function isEditor()
+    public function isEmployee()
     {
-        return $this->role === 'EDITOR';
+        return $this->role === 'EMPLOYEE';
     }
 
-    public function isUser()
+    public function isDelivery()
     {
-        return $this->role === 'USER';
+        return $this->role === 'DELIVERY';
     }
 }

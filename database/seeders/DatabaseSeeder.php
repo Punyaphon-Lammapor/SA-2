@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DeliveryNoteSeeder::class);
         $this->call(ProblemSeeder::class);
         $this->call(UseSeeder::class);
+        $this->call(UserSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 
