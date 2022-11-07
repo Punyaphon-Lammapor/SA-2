@@ -51,3 +51,7 @@ Route::post('/orders/{order}/delivery/note/store', [\App\Http\Controllers\OrderC
 Route::post('/orders/{order}/updatestatus', [\App\Http\Controllers\OrderController::class, 'updateStatus'])
     ->name('orders.updatestatus');
 
+
+Route::post('/problems/{order}/updatestatus', [\App\Http\Controllers\ProblemController::class, 'updateStatus'])
+    ->name('problems.updatestatus');
+
