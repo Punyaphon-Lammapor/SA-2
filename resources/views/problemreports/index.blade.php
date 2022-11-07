@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+    @auth
 
     {{--    @if($customer)--}}
     {{--            <div class="post-list">--}}
@@ -46,4 +47,5 @@
             </table>
         </section>
     </div>
+    @endauth
 @endsection

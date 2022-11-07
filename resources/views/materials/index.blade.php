@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+    @auth
     <h1 class="mt-8 text-center text-3xl font-bold">All Materials</h1>
     <section class="mx-8">
         <div class="mt-4 relative flex justify-end">
@@ -60,4 +61,5 @@
 			</table>
 		</div>
     </section>
+    @endauth
 @endsection
