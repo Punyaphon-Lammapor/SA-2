@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->date('delivery_date');
             $table->char('delivery_description', 80)->nullable();
+            $table->string('image')->nullable();
             $table->foreignIdFor(\App\Models\Order::class); //order_id
             $table->timestamps();
         });

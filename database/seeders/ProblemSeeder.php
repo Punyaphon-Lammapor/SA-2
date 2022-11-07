@@ -26,7 +26,7 @@ class ProblemSeeder extends Seeder
         $problem2 = new Problem();
         $problem2->problem_description = 'ไฟกระพริบ delay นาน';
         $problem2->order_id = Order::find(1)->id;
-        $problem2->problem_status_id = ProblemStatus::where('problem_status_process', 'ได้รับแจ้งปัญหา')->first()->id;
+        $problem2->problem_status_id = ProblemStatus::where('problem_status_process', 'แก้ไขปัญหาแล้ว')->first()->id;
         $problem2->save();
     }
 }

@@ -1,4 +1,4 @@
-{{-- resources/views/posts/show.blade.php --}}
+
 @extends('layouts.main')
 
 @section('content')
@@ -159,8 +159,12 @@
                 <span class="bg-white px-4 text-sm text-gray-500">Delivery Note</span>
             </div>
         </div>
+        <div class="mx-8">
+            <p>Address: {{ $order->customer->address }} {{ $order->customer->province->province_name }} {{ $order->customer->postal_code }}</p>
+            <p>Phone Number: {{ $order->customer->phone_number }}</p>
+        </div>
         <section class="mt-8 mx-16">
-            <form action="{{ route('orders.delivery.note.store', ['order' => $order->id]) }}" method="post">
+            <form action="{{ route('orders.delivery.note.store', ['order' => $order->id]) }}" method="post" enctype="multipart/form-data">
                 @csrf
             <div class="relative z-0 mb-6 w-full group">
                 <label for="delivery_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -191,6 +195,15 @@
                        value="{{ old('delivery_description') }}"
                        placeholder="" required>
             </div>
+                <div class="add-image-button">
+                    <div>
+                        <label class="create-text">Picture :</label>
+                        <input class="create-text" type="file" name="image" class="form-control">
+                        @error('image')
+                        <div  class="alert alert-danger mt-1 mb-1">{{ $message }} </div>
+                        @enderror
+                    </div>
+                </div>
                 <div class="mt-2">
                     <button type="submit" class="app-button">Submit</button>
                 </div>
@@ -211,6 +224,7 @@
         <div class="mx-8">
             <p>Delivery Date : {{ $order->deliveryNote->delivery_date }}</p>
             <p>Description : {{ $order->deliveryNote->delivery_description }}</p>
+            <img src="{{ asset("/storage/images/".$order->deliveryNote->image) }}" width="20%" height="20%">
         </div>
     @endif
 
