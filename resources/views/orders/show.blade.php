@@ -71,6 +71,7 @@
         @endforeach
     </div>
 
+    @if(Auth::user()->role == 'OWNER')
     <div>
     @if($order->products->count() < $order->product_qty)
     <section class="mx-16 mt-8">
@@ -151,6 +152,7 @@
                 </div>
 
             </form>
+        @endif
         </section>
         @endif
         </div>
