@@ -56,27 +56,27 @@
 			<table class="table-auto border-slate-800 p-4" style="width:100%">
 				<thead class="bg-orange-400">
 					<tr>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Province</th>
-                        <th>Postal Code</th>
-                        <th>Phone Number</th>
-                        <th>Email</th>
+                        <th class="border border-slate-300">Name</th>
+                        <th class="border border-slate-300">Address</th>
+                        <th class="border border-slate-300">Province</th>
+                        <th class="border border-slate-300">Postal Code</th>
+                        <th class="border border-slate-300">Phone Number</th>
+                        <th class="border border-slate-300">Email</th>
 					</tr>
 				</thead>
 				<tbody>
                     @foreach($customers as $customer)
                     <tr>
-                        <td>
+                        <td class="border border-slate-300">
                             <a href="{{ route('customers.show', ['customer' => $customer->id]) }}">
                                 {{ $customer->firstname }} {{ $customer->lastname }}
                             </a>
                         </td>
-                        <td> {{ $customer->address }}</td>
-                        <td> {{ $customer->province->province_name }}</td>
-                        <td> {{ $customer->postal_code }}</td>
-                        <td> {{ $customer->phone_number }}</td>
-                        <td> {{ $customer->email }}</td>
+                        <td class="border border-slate-300"> {{ $customer->address }}</td>
+                        <td class="border border-slate-300"> {{ $customer->province->province_name }}</td>
+                        <td class="border border-slate-300"> {{ $customer->postal_code }}</td>
+                        <td class="border border-slate-300"> {{ $customer->phone_number }}</td>
+                        <td class="border border-slate-300"> {{ $customer->email }}</td>
                     </tr>
 					@endforeach
 				</tbody>
