@@ -2,18 +2,18 @@
 
 @section('content')
     <section class="mx-8">
-        <h1 class="text-3xl mb-6">
+        <h1 class="text-center text-orange-600 font-bold text-3xl mt-8">
             Add new Order
         </h1>
-
+        
         <form action="{{ route('orders.store') }}" method="post">
             @csrf
 
             <div class="mb-6 create-tag-contener">
-                <label for="customer_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                <label for="customer_id" class="text-orange-600 block mb-2 text-sm font-medium dark:text-gray-300">
                     Customer
                 </label>
-                <select name="customer_id" id = 'customer_id' class="block w-500 mt-1 create-tag-contener" required>
+                <select name="customer_id" id = 'customer_id' class="text-gray-700 block w-500 mt-1 create-tag-contener" required>
                     @foreach ($customers as $customer)
                         <option value="{{ $customer->id }}">{{ $customer->firstname }} {{ $customer->lastname }}</option>
                     @endforeach
@@ -21,7 +21,7 @@
             </div>
 
             <div class="relative z-0 mb-6 w-full group">
-                <label for="product_qty" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                <label for="product_qty" class="text-orange-600 block mb-2 text-sm font-medium dark:text-gray-300">
                     Quantity
                 </label>
                 @if ($errors->has('product_qty'))
@@ -36,7 +36,7 @@
             </div>
 
             <div class="relative z-0 mb-6 w-full group">
-                <label for="order_price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                <label for="order_price" class="text-orange-600 block mb-2 text-sm font-medium dark:text-gray-300">
                     Price
                 </label>
                 @if ($errors->has('order_price'))
@@ -51,7 +51,7 @@
             </div>
 
             <div class="relative z-0 mb-6 w-full group">
-                <label for="customer_need_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                <label for="customer_need_date" class="text-orange-600 block mb-2 text-sm font-medium  dark:text-gray-300">
                     Customer Need Date
                 </label>
                 @if ($errors->has('customer_need_date'))

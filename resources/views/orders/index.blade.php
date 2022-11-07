@@ -2,18 +2,17 @@
 
 @section('content')
     <section class="mx-8">
-        <div class="relative flex justify-end">
-            <div class="relative py-4">
-                <span class="px-4 text-sm text-gray-800">All Orders ({{$orders->count()}})</span>
-            </div>
-        </div>
-        <div class="relative">
+        <div class="mt-4 relative flex justify-end">
             <a class="app-button" href="{{ route('orders.create') }}">
                 Add new Order
             </a>
         </div>
+            <div class="relative px-4">
+                <span class="font-bold text-sm text-gray-800">All Orders ({{$orders->count()}})</span>
+            </div>
+        </div>
 
-            <div class="relative inset-0 flex items-center mt-8">
+            <div class="relative inset-0 flex items-center mt-4">
                 <div class="w-full border-b border-gray-400"></div>
             </div>
 

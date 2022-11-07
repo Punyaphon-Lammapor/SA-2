@@ -3,16 +3,6 @@
 @section('content')
 
 <div class="flex flex-row justify-center mt-8">    
-    <form action="{{ route('customers.index') }}" class="flex items-center" method="GET">
-        <label for="search" class="sr-only">Search</label>
-        <div class="relative w-80">
-            <input type="text" id="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Firstname, Lastname, Phone Number" required>
-        </div>
-        <button type="submit" class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-            <span class="sr-only">Search</span>
-        </button>
-    </form>
 
 {{--    @if($foundCustomers->isNotEmpty)--}}
 {{--            @foreach($foundCustomers as $foundCustomer)--}}
@@ -32,13 +22,14 @@
             </a>
         </div>
         <div>
-            <form class="flex justify-end items-center mt-4">
-                <label for="phone_number" class="sr-only">Search</label>
-                <div class="relative w-50 text-center">
-                    <input type="text" id="phone_number" class=" text-gray-900 text-sm rounded-lg block w-full pl-10 p-2.5 
+            <form action="{{ route('customers.index') }}" class="flex justify-end items-center mt-4" method="GET">
+                <label for="search" class="sr-only">Search</label>
+                <div class="relative w-80">
+                    <input type="text" id="search" class=" text-gray-900 text-sm rounded-lg block w-full pl-10 p-2.5 
                     bg-gray-500 border-gray-400 focus:ring-gray-500 focus:border-gray-500
                     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
-                    dark:focus:ring-gray-500 dark:focus:border-gray-500" placeholder="Phone Number" required>
+                    dark:focus:ring-gray-500 dark:focus:border-gray-500" placeholder="Firstname, Lastname, Phone Number" 
+                      required>
                 </div>
                 <button type="submit" class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
@@ -47,29 +38,31 @@
             </form>
             <div class="flex justify-end mt-8">
                 <div class="relative flex ">
-                    <span class="px-4 text-sm text-gray-800">All Customer ({{ $customers->count() }})</span>
+                    <span class="font-bold px-4 text-sm text-gray-800">All Customer ({{ $customers->count() }})</span>
                 </div>
             </div>
         </div>
         <div class="relative inset-0 flex items-center mt-4">
             <div class="w-full border-b border-gray-400"></div>
         </div>
-        <table class="mt-4 justify-between table table-striped table-hover table-bordered">
-            <thead class="bg-white">
-                <tr>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Province</th>
-                    <th>Postal Code</th>
-                    <th>Phone Number</th>
-                    <th>Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($customers as $customer)
+
+        <div class="container-fluid">
+			<table class="table table-striped table-bordered table-bordered table-hover p-4" style="width:100%">
+				<thead class="bg-white">
+					<tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Province</th>
+                        <th>Postal Code</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+					</tr>
+				</thead>
+				<tbody>
+                    @foreach($customers as $customer)
                     <tr>
                         <td>
-                            <a href="{{ route('customers.show', ['customer' => $customer->id]) }}">
+                            <a class="app-button-name" href="{{ route('customers.show', ['customer' => $customer->id]) }}">
                                 {{ $customer->firstname }} {{ $customer->lastname }}
                             </a>
                         </td>
@@ -79,9 +72,11 @@
                         <td> {{ $customer->phone_number }}</td>
                         <td> {{ $customer->email }}</td>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+					@endforeach
+				</tbody>
+			</table>
+		</div>
+
     </section>
 </div>
 @endsection

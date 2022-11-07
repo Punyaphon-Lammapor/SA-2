@@ -2,7 +2,7 @@
 <nav class="flex flex-col bg-white rounded">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
         <a href="{{ url('/') }}" class="flex items-center">
-            <span class="self-center ml-4 text-xl font-semibold whitespace-nowrap">DRAGON</span>
+            <span class="self-center ml-4 text-3xl font-bold whitespace-nowrap">DRAGON</span>
         </a>    
         <button data-collapse-toggle="navbar-default" type="button"
             class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
@@ -18,31 +18,31 @@
                 @auth
             <li>
                 <a href="{{ route('orders.index') }}"
-                    class="block py-2 pr-4 pl-3 rounded border-gray-400 md:p-0 hover:underline @if(Route::currentRouteName() === 'orders.index') current-page @endif" >
+                    class="text-xl font-semibold block py-2 pr-4 pl-3 rounded border-gray-400 md:p-0 hover:underline @if(Route::currentRouteName() === 'orders.index') current-page @endif" >
                     Orders
                 </a>
             </li>
             <li>
                 <a href="{{ route('materials.index') }}"
-                class="block py-2 pr-4 pl-3 rounded md:p-0 hover:underline @if(Route::currentRouteName() === 'materials.index') current-page @endif">
+                class="text-xl font-semibold block py-2 pr-4 pl-3 rounded md:p-0 hover:underline @if(Route::currentRouteName() === 'materials.index') current-page @endif">
                 Materials
             </a>
             </li>
                 <li>
                     <a href="{{ route('customers.index') }}"
-                    class="block py-2 pr-4 pl-3 rounded md:p-0 hover:underline @if(Route::currentRouteName() === 'customers.index') current-page @endif" >
+                    class="text-xl font-semibold block py-2 pr-4 pl-3 rounded md:p-0 hover:underline @if(Route::currentRouteName() === 'customers.index') current-page @endif" >
                     Customer
                 </a>
             </li>
             </li>
                 <li>
                     <a href="{{ route('problems.index') }}"
-                    class="block py-2 pr-4 pl-3 rounded md:p-0 hover:underline @if(Route::currentRouteName() === 'problems.index') current-page @endif" >
+                    class="text-xl font-semibold block py-2 pr-4 pl-3 rounded md:p-0 hover:underline @if(Route::currentRouteName() === 'problems.index') current-page @endif" >
                     Problems
                 </a>
             </li>
 
-                <li>
+                <li class="text-xl font-semibold">
                     {{ Auth::user()->email }}
                 </li>
                     <li>
@@ -51,7 +51,8 @@
                             
                             <x-dropdown-link :href="route('logout')"
                             onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                                this.closest('form').submit();"
+                                                class="text-xl font-semibold">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
@@ -59,7 +60,7 @@
                     @else
                     <li>
                         <a href="{{ route('login') }}"
-                        class="block py-2 pr-4 pl-3 rounded md:p-0 hover:underline @if(Route::currentRouteName() === 'login') current-page @endif" >
+                        class="text-xl font-semibold block py-2 pr-4 pl-3 rounded md:p-0 hover:underline @if(Route::currentRouteName() === 'login') current-page @endif" >
                         Login
                     </a>
                 </li>
@@ -69,4 +70,5 @@
         </div>
     </div>
 </nav>
-</aside>
+
+  
