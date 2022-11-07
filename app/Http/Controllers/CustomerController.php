@@ -21,19 +21,19 @@ class CustomerController extends Controller
 //            $customers = Customer::get();
 //        }
 //        return view('customers.index', compact('customers'));
-//        $search = $request->input('search');
-//        if($search != '') {
-//            $customers = Customer::query()
-//                ->where('firstname', 'LIKE', '%{$search}%')
-//                ->orWhere('lastname', 'LIKE', '%{$search}%')
-//                ->orWhere('phone_number', 'LIKE', '%{$search}%')->get();
-//        } else {
-//            $customers = Customer::latest()->paginate(50);
-//        }
-//        return view('customers.index', ['customers' => $customers]);
 
-        $customers = Customer::latest()->paginate(50);
+        $search = $request->input('search');
+        if($search != '') {
+            $customers = Customer::where('firstname', 'LIKE', '%{$search}%')
+                ->orWhere('lastname', 'LIKE', '%{$search}%')
+                ->orWhere('phone_number', 'LIKE', '%{$search}%')->get();
+        } else {
+            $customers = Customer::latest()->paginate(50);
+        }
         return view('customers.index', ['customers' => $customers]);
+
+//        $customers = Customer::latest()->paginate(50);
+//        return view('customers.index', ['customers' => $customers]);
     }
 
     /**
@@ -134,12 +134,10 @@ class CustomerController extends Controller
     public function search(Request $request) {
         $search = $request->input('search');
 
-        $foundCustomers = Customer::query()
-            ->where('firstname', 'LIKE', '%{$search}%')
+        $customers = Customer::where('firstname', 'LIKE', '%{$search}%')
             ->orWhere('lastname', 'LIKE', '%{$search}%')
             ->orWhere('phone_number', 'LIKE', '%{$search}%')->get();
 
-//        return view('search', compact('customers'));
-        return view('customers.index', compact('foundCustomers'));
+        return view('customers.index', compact('customers'));
     }
 }

@@ -14,6 +14,6 @@ class Problem extends Model
     }
 
     public function problemStatus() {
-        $this->belongsTo(ProductStatus::class);
+        return $this->belongsTo(ProductStatus::class);
     }
 }

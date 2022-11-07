@@ -10,6 +10,6 @@ class ProblemStatus extends Model
     use HasFactory;
 
     public function problems() {
-        $this->hasMany(Problem::class);
+        return $this->hasMany(Problem::class);
     }
 }

@@ -56,12 +56,18 @@
     </div>
 
     @foreach($order->products as $product)
-        <a href=""
-           class="block p-6 w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 ">
+        <div class="block p-6 w-full bg-white rounded-lg border border-gray-200 shadow-md ">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-                {{ $product->id }} : {{ $product->name }}
+                Product ID : {{ $product->id }}  {{ $product->name }}
             </h5>
-        </a>
+            <p>Height : {{ $product->height }}    |    Width : {{ $product->width }}</p>
+            @if($product->description != "")
+                <p>Description : {{ $product->description }}</p>
+            @else
+                <p>Description : - </p>
+            @endif
+            <p>Price : {{ $product->price }}฿</p>
+        </div>
     @endforeach
 
     @if($order->products->count() < $order->product_qty)
@@ -219,9 +225,14 @@
         </div>
         <div class="mx-8">
             <p>Address: {{ $order->customer->address }} {{ $order->customer->province->province_name }} {{ $order->customer->postal_code }}</p>
-            <p>Phone Number: {{ $order->customer->phone_number }}</p>
+            <p>Phone Number : {{ $order->customer->phone_number }}</p>
             <p>Delivery Date : {{ $order->deliveryNote->delivery_date }}</p>
-            <p>Description : {{ $order->deliveryNote->delivery_description }}</p>
+            @if($order->deliveryNote->delivery_description != "")
+                <p>Description : {{ $order->deliveryNote->delivery_description }}</p>
+            @else
+                <p>Description : - </p>
+            @endif
+
             @if($order->deliveryNote->image != "")
                 <img src="{{ asset("/storage/images/".$order->deliveryNote->image) }}" width="20%" height="20%">
             @endif
@@ -237,14 +248,13 @@
                 <span class="bg-white px-4 text-sm text-gray-500">Problem ({{ $order->problems->count() }})</span>
             </div>
         </div>
-        <section class="mt-8 mx-16">
+        <section class="mx-16">
             @foreach($order->problems as $problem)
-                <a href=""
-                   class="block p-6 w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 ">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-                        {{ $problem->create_at }} : {{ $problem->problem_description }}
-                    </h5>
-                </a>
+                <div>
+                    <p class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+                         {{ $problem->problem_description }}
+                    </p>
+                </div>
             @endforeach
         </section>
     @endif
