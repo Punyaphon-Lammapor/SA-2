@@ -123,7 +123,6 @@ class OrderController extends Controller
         $product->height = $request->input('height');
         $product->width = $request->input('width');
         $product->price = $request->input('price');
-        $product->product_status_id = ProductStatus::where('product_status_process', 'กำลังผลิต')->first()->id;
         $order->products()->save($product);
 
         return redirect()->route('orders.show', ['order' => $order->id]);

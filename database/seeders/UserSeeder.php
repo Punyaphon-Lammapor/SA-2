@@ -21,32 +21,32 @@ class UserSeeder extends Seeder
 //user id name email password organization_id(fk)
     public function run()
     {
-        $user = USER::where('email', 'user1@example.com')->first();
+        $user = USER::where('email', 'owner@example.com')->first();
         if(!$user){
             $user = new User();
             $user->name = 'Owner';
-            $user->email = 'user1@example.com';
+            $user->email = 'owner@example.com';
             $user->password = Hash::make('userpass');
             $user->role = 'OWNER';
             $user->save();
         }
 
 
-        $user = USER::where('email', 'user2@example.com')->first();
+        $user = USER::where('email', 'employee@example.com')->first();
         if(!$user){
             $user = new User();
             $user->name = 'Employee';
-            $user->email = 'user2@example.com';
+            $user->email = 'employee@example.com';
             $user->password = Hash::make('userpass');
             $user->role = 'EMPLOYEE';
             $user->save();
         }
 
-        $user = USER::where('email', 'user3@example.com')->first();
+        $user = USER::where('email', 'delivery@example.com')->first();
         if(!$user){
             $user = new User();
             $user->name = 'Delivery';
-            $user->email = 'user3@example.com';
+            $user->email = 'delivery@example.com';
             $user->password = Hash::make('userpass');
             $user->role = 'DELIVERY';
             $user->save();
