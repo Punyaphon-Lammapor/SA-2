@@ -10,10 +10,10 @@ class Problem extends Model
     use HasFactory;
 
     public function order() {
-        $this->belongsTo(Order::class);
+        return $this->belongsTo(Order::class);
     }
 
     public function problemStatus() {
-        $this->belongsTo(ProductStatus::class);
+        return $this->belongsTo(ProductStatus::class);
     }
 }

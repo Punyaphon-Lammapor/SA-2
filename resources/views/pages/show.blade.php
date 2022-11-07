@@ -1,4 +1,4 @@
-{{-- resources/views/pages/show.blade.php --}}
+
 
 @extends('layouts.main')
 

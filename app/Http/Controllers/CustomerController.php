@@ -15,13 +15,25 @@ class CustomerController extends Controller
      */
     public function index(Request $request)
     {
-//        $search = $request->input('search') ?? "";
-//        if($search != "") {
-//            $customers = Customer::where('firstname', 'LIKE', "%search%")->orWhere('phone_number', 'LIKE', "%search%")->get();
+//        if($request->filled('search')) {
+//            $customers = Customer::search($request->search)->get();
 //        } else {
-            $customers = Customer::latest()->paginate(50);
+//            $customers = Customer::get();
 //        }
+//        return view('customers.index', compact('customers'));
+
+        $search = $request->input('search');
+        if($search != '') {
+            $customers = Customer::where('firstname', 'LIKE', '%{$search}%')
+                ->orWhere('lastname', 'LIKE', '%{$search}%')
+                ->orWhere('phone_number', 'LIKE', '%{$search}%')->get();
+        } else {
+            $customers = Customer::latest()->paginate(50);
+        }
         return view('customers.index', ['customers' => $customers]);
+
+//        $customers = Customer::latest()->paginate(50);
+//        return view('customers.index', ['customers' => $customers]);
     }
 
     /**
@@ -119,9 +131,13 @@ class CustomerController extends Controller
         //
     }
 
-    public function searchPhoneNumber(Request $request) {
-        $phone_number = $request->input('phone_number');
-        $customer = Customer::where('phone_number', $phone_number);
-        return view('customers.index')->with('customer', $customer);
+    public function search(Request $request) {
+        $search = $request->input('search');
+
+        $customers = Customer::where('firstname', 'LIKE', '%{$search}%')
+            ->orWhere('lastname', 'LIKE', '%{$search}%')
+            ->orWhere('phone_number', 'LIKE', '%{$search}%')->get();
+
+        return view('customers.index', compact('customers'));
     }
 }

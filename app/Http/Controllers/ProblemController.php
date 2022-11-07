@@ -16,7 +16,10 @@ class ProblemController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::all();
+        $statuses = ProblemStatus::all();
+        $problems = Problem::get();
+        return view('problemreports.index', ['orders' => $orders,'problems' => $problems,'statuses' => $statuses]);
     }
 
     /**
@@ -57,6 +60,7 @@ class ProblemController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -80,6 +84,15 @@ class ProblemController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function updateStatus(Request $request, $id){
+        $problem = Problem::find($id);
+        if($request->input('status')) {
+            $problem->problem_status_id = $request->input('status');
+            $problem->save();
+        }
+        return redirect()->route('problems.index', ['problem' => $problem->id]);
     }
 
     /**
