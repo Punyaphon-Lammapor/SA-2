@@ -13,10 +13,6 @@ class Product extends Model
         $this->belongsTo(Order::class);
     }
 
-    public function productStatus() {
-        $this->belongsTo(ProductStatus::class);
-    }
-
     public function uses() {
         $this->hasMany(Used::class);
     }
