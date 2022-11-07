@@ -16,7 +16,8 @@ class ProblemController extends Controller
      */
     public function index()
     {
-        //
+        $problems = Problem::get();
+        return view('problems.index', ['problems' => $problems]);
     }
 
     /**
@@ -57,6 +58,7 @@ class ProblemController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
