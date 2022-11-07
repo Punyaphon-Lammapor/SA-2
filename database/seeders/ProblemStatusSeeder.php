@@ -20,7 +20,7 @@ class ProblemStatusSeeder extends Seeder
         $problem_status1->save();
 
         $problem_status1 = new ProblemStatus();
-        $problem_status1->problem_status_process = 'ปัญหาได้รับการแก้ไขแล้ว';
+        $problem_status1->problem_status_process = 'แก้ไขปัญหาแล้ว';
         $problem_status1->save();
     }
 }
