@@ -35,13 +35,19 @@ require __DIR__.'/auth.php';
 
 Route::resource('/customers', \App\Http\Controllers\CustomerController::class);
 Route::resource('/materials', \App\Http\Controllers\MaterialController::class);
+Route::resource('/reports', \App\Http\Controllers\ReportController::class);
 Route::resource('/problems', \App\Http\Controllers\ProblemController::class);
 
 Route::get('/search', [\App\Http\Controllers\CustomerController::class, 'searchPhoneNumber'])->name('search');
-
+//Route::get('/orders/report', [\App\Http\Controllers\OrderController::class, 'reportOrder'])->name('orders.report');
 Route::resource('/orders', \App\Http\Controllers\OrderController::class);
-//Route::get('/orders', [\App\Http\Controllers\OrderController::class, 'store']);
-Route::post('/order/{order}/products/store', [\App\Http\Controllers\OrderController::class, 'storeProduct'])
+
+Route::post('/orders/{order}/products/store', [\App\Http\Controllers\OrderController::class, 'storeProduct'])
     ->name('orders.products.store');
+
+Route::post('/orders/{order}/delivery/note/store', [\App\Http\Controllers\OrderController::class, 'storeDeliveryNote'])
+    ->name('orders.delivery.note.store');
+
 Route::post('/orders/{order}/updatestatus', [\App\Http\Controllers\OrderController::class, 'updateStatus'])
     ->name('orders.updatestatus');
+

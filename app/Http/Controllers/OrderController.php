@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\DeliveryNote;
 use App\Models\Order;
 use App\Models\OrderStatus;
 use App\Models\Product;
@@ -125,6 +126,26 @@ class OrderController extends Controller
         $product->product_status_id = ProductStatus::where('product_status_process', 'กำลังผลิต')->first()->id;
         $order->products()->save($product);
 
+        return redirect()->route('orders.show', ['order' => $order->id]);
+    }
+
+    public function storeDeliveryNote(Request $request, Order $order) {
+
+        $validated = $request->validate([
+            'delivery_date' => ['required', 'before:tomorrow']
+        ]);
+
+        $delivery_note = new DeliveryNote();
+        $delivery_note->delivery_date = $request->input('delivery_date');
+        if($request->has('delivery_description')){
+            $delivery_note->delivery_description = $request->input('delivery_description');
+        } else {
+            $delivery_note->delivery_description = null;
+        }
+        $order->deliveryNote()->save($delivery_note);
+
+        $order->order_status_id = OrderStatus::where('order_status_process', 'จัดส่งสำเร็จ')->first()->id;
+        $order->save();
         return redirect()->route('orders.show', ['order' => $order->id]);
     }
 
