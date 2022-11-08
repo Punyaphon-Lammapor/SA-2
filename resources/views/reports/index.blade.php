@@ -13,6 +13,9 @@
     {{--    @endif--}}
     <div>
         <section class="mx-8">
+            <h1 class="text-3xl mx-4 mt-6">
+                ออเดอร์ที่ต้องจัดส่ง
+            </h1>
 
             <table class="table-auto border-collapse">
                 <thead>
@@ -30,6 +33,7 @@
                 </thead>
                 <tbody>
                 @foreach($orders as $order)
+                    @if($order->order_status_id == 3)
                     <tr>
                         <td class="border border-slate-300">{{ $order->id }}</td>
                         <td class="border border-slate-300">{{ $order->customer->firstname }} {{ $order->customer->lastname }}</td>
@@ -41,20 +45,15 @@
                         </td>
                         <td class="border border-slate-300"> {{ $order->order_price }}</td>
                         <td class="border border-slate-300">
-                                    @if($order->order_status_id == 1)
-                                        <span class="ml-2 text-base font-bold bg-red-600 text-white text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-full mr-2" >ยืนยันออเดอร์</span>
-                                    @elseif($order->order_status_id == 2)
-                                        <span class="ml-2 text-base font-bold bg-orange-400 text-white text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-full mr-2">กำลังดำเนินการผลิต</span>
-                                    @elseif($order->order_status_id == 3)
+                                    @if($order->order_status_id == 3)
                                         <span class="ml-2 text-base font-bold bg-blue-400 text-white text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-full mr-2">รอจัดส่ง</span>
-                                    @elseif($order->order_status_id == 4)
-                                        <span class="ml-2 text-base font-bold bg-green-600 text-white text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-full mr-2">จัดส่งสำเร็จ</span>
-                                    @endif
+                                   @endif
                                 </td>
                         @if($order->order_status_id != null and old('status', $order->order_status_id) != 4)
                             <td class="border border-slate-300">{{ $order->customer_need_date}}</td>
                         @endif
                     </tr>
+                    @endif
                 @endforeach
                 </tbody>
             </table>

@@ -13,6 +13,9 @@
     {{--        </div>--}}
     {{--    @endif--}}
     <div>
+        <h1 class="text-3xl mx-4 mt-6">
+            ปัญหาที่รอการแก้ไข
+        </h1>
         <h1 class="mt-8 text-center text-3xl font-bold">All Problems</h1>
         <section class="flex justify-center mx-8">
             <table class="mt-8 table-auto border-slate-800 p-4" style="width: 100%">
@@ -28,6 +31,7 @@
                 </thead>
                 <tbody>
                 @foreach($problems as $problem)
+                    @if($problem->problem_status_id == 1)
                     <tr>
                         <td class="border border-slate-300">{{ $problem->id }}</td>
                         <td class="border border-slate-300">{{ $problem->problem_description }}</td>
@@ -35,13 +39,12 @@
                         <td class="border border-slate-300"> {{ $problem->order->customer->phone_number }}</td>
                         <td class="border border-slate-300"> {{ $problem->order->customer->address }} {{ $problem->order->customer->province->province_name }} {{ $problem->order->customer->postal_code }}</td>
                         <td class="border border-slate-300">
-                                    @if($problem->problem_status_id == 1)
-                                        <span class="ml-2 text-base font-bold bg-red-600 text-white text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-full mr-2" >ได้รับแจ้งปัญหา</span>
-                                    @elseif($problem->problem_status_id == 2)
+                                    @if($problem->problem_status_id == 2)
                                         <span class="ml-2 text-base font-bold bg-green-400 text-white text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-full mr-2">แก้ไขปัญหาแล้ว</span>
                                    @endif
                                 </td>
                     </tr>
+                    @endif
                 @endforeach
                 </tbody>
             </table>
