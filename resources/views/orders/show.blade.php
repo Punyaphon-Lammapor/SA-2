@@ -185,7 +185,7 @@
                     </p>
                     @endif
                     <input type="date" name="delivery_date" id="delivery_date"
-                    class="bg-gray-50 border @if($errors->has('delivery_date')) border-red-300 @else border-gray-300 @endif text-gray-900 w-1/3 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    class="bg-gray-50 border w-1/3 @if($errors->has('delivery_date')) border-red-300 @else border-gray-300 @endif text-gray-900 w-1/3 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     value="{{ old('delivery_date') }}"
                     placeholder="" required >
 
@@ -200,7 +200,7 @@
                     </p>
                     @endif
                     <input type="text" name="delivery_description" id="delivery_description"
-                    class="bg-gray-50 border @if($errors->has('delivery_description')) border-red-300 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg w-1/3 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    class="bg-gray-50 border w-1/3 @if($errors->has('delivery_description'))  border-red-300 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg w-1/3 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     value="{{ old('delivery_description') }}"
                     placeholder="" required>
                 </div>

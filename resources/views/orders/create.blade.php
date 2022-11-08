@@ -5,7 +5,7 @@
         <h1 class="text-center text-orange-600 font-bold text-3xl mt-8">
             Add new Order
         </h1>
-        
+
         <form action="{{ route('orders.store') }}" method="post">
             @csrf
 
@@ -30,7 +30,7 @@
                     </p>
                 @endif
                 <input type="number" name="product_qty" id="product_qty" min="1" max="5"
-                       class="bg-gray-50 border @if($errors->has('product_qty')) border-red-300 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       class="bg-gray-50 w-1/4 border @if($errors->has('product_qty')) border-red-300 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                        value="{{ old('product_qty') }}"
                        placeholder="" required>
             </div>
@@ -45,7 +45,7 @@
                     </p>
                 @endif
                 <input type="number" name="order_price" id="order_price"
-                       class="bg-gray-50 border @if($errors->has('order_price')) border-red-300 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       class="bg-gray-50 w-1/4 border @if($errors->has('order_price')) border-red-300 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                        value="{{ old('order_price') }}"
                        placeholder="" required>
             </div>
@@ -60,13 +60,13 @@
                     </p>
                 @endif
                 <input type="date" name="customer_need_date" id="customer_need_date"
-                       class="bg-gray-50 border @if($errors->has('customer_need_date')) border-red-300 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       class="bg-gray-50 w-1/4 border @if($errors->has('customer_need_date')) border-red-300 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                        value="{{ old('customer_need_date') }}"
                        placeholder="" required >
 
             </div>
 
-            <div class="mr-2 flex justify-end">
+            <div class="mr-2 flex ">
                 <button class="app-button" type="submit">Create</button>
             </div>
         </form>
