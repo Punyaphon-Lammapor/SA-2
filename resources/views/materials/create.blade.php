@@ -33,7 +33,7 @@
                         {{ $errors->first('qty') }}
                     </p>
                 @endif
-                <input type="number" name="qty" id="qty" min="1" max="5"
+                <input type="number" name="qty" id="qty" min="1" max="30"
                        class="bg-gray-50 border @if($errors->has('qty')) border-red-300 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                        value="{{ old('qty') }}"
                        placeholder="" required>
