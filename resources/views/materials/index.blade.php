@@ -31,12 +31,12 @@
                     <tr>
                         <td class="border border-slate-300">
                             <a href="{{ route('materials.show', ['material' => $material->id]) }}">
-                                @if ($material->qty < 11 )
+                                @if ($material->qty < 6 )
                                     <h5 class="ml-2 mb-2 tracking-tight text-red-500 ">
                                         {{ $material->m_name }}
                                     </h5>
                                 @endif
-                                @if ($material->qty >= 11 )
+                                @if ($material->qty >= 6 )
                                     <h5 class="ml-2 mb-2 tracking-tight text-gray-900 ">
                                         {{ $material->m_name }}
                                     </h5>
@@ -44,12 +44,12 @@
                             </a>
                         </td>
                         <td class="border border-slate-300">
-                            @if ($material->qty < 11 )
+                            @if ($material->qty < 6 )
                             <h5 class="ml-2 mb-2 tracking-tight text-red-500 ">
                                 {{ $material->qty }}
                             </h5>
                             @endif
-                            @if ($material->qty >= 11 )
+                            @if ($material->qty >= 6 )
                                 <h5 class="ml-2 mb-2 tracking-tight text-gray-900 ">
                                     {{ $material->qty }}
                                 </h5>
