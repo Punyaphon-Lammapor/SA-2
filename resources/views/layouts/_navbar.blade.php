@@ -26,13 +26,13 @@
 
                         <li>
                             <a href="{{ route('reports.index') }}"
-                               class="text-xl font-semibold block py-2 pr-4 pl-3 rounded border-gray-400 md:p-0 hover:underline @if(Route::currentRouteName() === 'orders.index') current-page @endif" >
+                               class="text-xl font-semibold block py-2 pr-4 pl-3 rounded border-gray-400 md:p-0 hover:underline @if(Route::currentRouteName() === 'reports.index') current-page @endif" >
                                 Order Report
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('problemreports.index') }}"
-                               class="text-xl font-semibold block py-2 pr-4 pl-3 rounded border-gray-400 md:p-0 hover:underline @if(Route::currentRouteName() === 'orders.index') current-page @endif" >
+                               class="text-xl font-semibold block py-2 pr-4 pl-3 rounded border-gray-400 md:p-0 hover:underline @if(Route::currentRouteName() === 'problemreports.index') current-page @endif" >
                                 Problem Report
                             </a>
                         </li>
