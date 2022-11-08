@@ -3,7 +3,7 @@
 @section('content')
     @auth
     <section class="mx-8">
-        <h1 class="text-3xl mx-4 mt-6">
+        <h1 class="text-3xl text-center font-bold mx-4 mt-6">
             All problems({{$problems->count()}})
         </h1>
         <a href="{{ route('problems.create') }}"

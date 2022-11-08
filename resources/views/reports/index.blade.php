@@ -13,12 +13,12 @@
     {{--    @endif--}}
     <div>
         <section class="mx-8">
-            <h1 class="text-3xl mx-4 mt-6">
+            <h1 class="text-3xl text-center font-bold mx-4 mt-6">
                 ออเดอร์ที่ต้องจัดส่ง
             </h1>
 
-            <table class="table-auto border-collapse">
-                <thead>
+            <table class="mt-8 table-auto border-slate-800 p-4" style="width: 100%">
+                <thead class="bg-orange-400">
                 <tr>
                     <th class="border border-slate-300">Order NO.</th>
                     <th class="border border-slate-300">Order By</th>
