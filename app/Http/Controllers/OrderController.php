@@ -75,9 +75,9 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Order $order)
     {
-        //
+        return view('orders.edit', ['order' => $order]);
     }
 
     /**
@@ -89,7 +89,12 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        $validated = $request->validate([
+            'customer_need_date' => ['required', 'after:today']
+        ]);
+        $order->customer_need_date = $request->input('customer_need_date');
+        $order->save();
+        return redirect()->route('orders.show', ['order' => $order->id]);
     }
 
     public function updateStatus(Request $request, Order $order){

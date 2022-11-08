@@ -20,6 +20,15 @@
             <p>Order Price : {{ $order->order_price }}฿</p>
             <p>Customer Need Date : {{ $order->customer_need_date }}</p>
         </div>
+        @if(Auth::user()->role == 'OWNER')
+        @if($order->orderStatus->order_status_process != 'จัดส่งสำเร็จ' && $order->orderStatus->order_status_process != 'รอจัดส่ง')
+            <div>
+            <a class="app-button" href="{{ route('orders.edit', ['order' => $order->id]) }}">
+                Edit Customer Need Date
+            </a>
+            </div>
+        @endif
+        @endif
 
         @if ($order->products)
         <section class="mt-8 mx-16 flex justify-end">
