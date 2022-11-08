@@ -30,7 +30,7 @@
                     </p>
                 @endif
                 <input type="text" name="problem_description" id="problem_description" min="1" max="5"
-                       class="bg-gray-50 border @if($errors->has('problem_description')) border-red-300 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       class="bg-gray-50 w-1/3 border @if($errors->has('problem_description')) border-red-300 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                        value="{{ old('problem_description') }}"
                        placeholder="" required>
             </div>

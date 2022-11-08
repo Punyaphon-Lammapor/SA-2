@@ -9,7 +9,7 @@
         <form class="mt-8" action="{{ route('customers.store') }}" method="post">
             @csrf
             <div class="flex">
-                <div class="mb-6 w-1/2 mx-4">
+                <div class="mb-6 w-1/3 mx-4">
                     <label for="firstname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                         Firstname
                     </label>
@@ -23,8 +23,8 @@
                     value="{{ old('firstname') }}"
                     placeholder="" required>
                 </div>
-                
-                <div class="mb-6 w-1/2 mx-4">
+
+                <div class="mb-6 w-1/3 mx-4">
                     <label for="lastname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                         Lastname
                     </label>
@@ -40,7 +40,7 @@
                 </div>
             </div>
 
-            <div class="mb-6 mx-4">
+            <div class="mb-6 mx-4 w-1/2">
                 <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Address
                 </label>
@@ -85,7 +85,7 @@
         </div>
 
         <div class="flex">
-            <div class="mx-4 mb-6 w-1/2">
+            <div class="mx-4 mb-6 w-1/3">
                 <label for="phone_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Phone Number
                 </label>
@@ -99,8 +99,8 @@
                 value="{{ old('phone_number') }}"
                 placeholder="" required>
             </div>
-            
-            <div class="mx-4 mb-6 w-1/2">
+
+            <div class="mx-4 mb-6 w-1/3">
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Email
                 </label>
@@ -116,8 +116,8 @@
             </div>
         </div>
 
-            <div class="flex justify-end mr-2">
-                <button class="app-button" type="submit">Create</button>
+            <div class="flex">
+                <button class="app-button ml-4" type="submit">Create</button>
             </div>
 
         </form>

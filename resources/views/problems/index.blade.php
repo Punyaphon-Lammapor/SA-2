@@ -20,10 +20,10 @@
                         {{ $problem->id }} : {{ $problem->problem_description }}
 
                     </h5>
-                    @if(Auth::user()->role == 'EMPLOYEE')
+                    @if(Auth::user()->role == 'EMPLOYEE' or Auth::user()->role == 'OWNER')
                     <form action="{{ route('problems.updatestatus', $problem->id)}}" method="post">
                         @csrf
-                        <select name ="status" id="status" class="form-control border-gray-300 relative z-0 mb-6 w-1/4 group">
+                        <select name ="status" id="status" class="form-control border-gray-300 relative z-0 mb-6 w-1/5 group">
                             @foreach($statuses as $status)
                                 @if ($problem->problem_status_id != null and old('status', $problem->problem_status_id) == $status->id)
                                     <option value="{{$status->id}}" selected>{{$status->problem_status_process}}</option>
@@ -33,7 +33,7 @@
                             @endforeach
                         </select>
                         <div class="p-2">
-                            <button type="submits" class="button border border-gray-200 bg-white-200 py-2 px-2 rounded">บันทึกสถานะ</button>
+                            <button type="submits" class="app-button py-2 px-2 ">บันทึกสถานะ</button>
                         </div>
                     </form>
                     @endif

@@ -19,7 +19,7 @@
                     </p>
                 @endif
                 <input type="text" name="m_name" id="m_name"
-                       class="bg-gray-50 border @if($errors->has('m_name')) border-red-300 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       class="bg-gray-50 w-1/4 border @if($errors->has('m_name')) border-red-300 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                        value="{{ old('m_name') }}"
                        placeholder="" required>
             </div>
@@ -34,13 +34,13 @@
                     </p>
                 @endif
                 <input type="number" name="qty" id="qty" min="1" max="30"
-                       class="bg-gray-50 border @if($errors->has('qty')) border-red-300 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       class="bg-gray-50 w-1/4 border @if($errors->has('qty')) border-red-300 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                        value="{{ old('qty') }}"
                        placeholder="" required>
             </div>
 
 
-            <div class="flex justify-end mr-2">
+            <div class="flex ml-2">
                 <button class="app-button" type="submit">Create</button>
             </div>
         </form>
