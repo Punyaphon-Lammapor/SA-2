@@ -11,11 +11,11 @@
 
             <div class="mb-6 create-tag-contener">
                 <label for="order_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                    Order ID
+                    Order Owner
                 </label>
                 <select name="order_id" id = 'order_id' class="block w-500 mt-1 create-tag-contener" required>
                     @foreach ($orders as $order)
-                        <option value="{{ $order->id }}">{{ $order->id }}</option>
+                        <option value="{{ $order->id }}">{{ $order->customer->firstname }} {{ $order->customer->lastname }}</option>
                     @endforeach
                 </select>
             </div>

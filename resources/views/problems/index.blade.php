@@ -6,10 +6,12 @@
         <h1 class="text-3xl text-center font-bold mx-4 mt-6">
             All problems({{$problems->count()}})
         </h1>
-        <a href="{{ route('problems.create') }}"
+        @if(Auth::user()->role == 'OWNER')
+        <a class="app-button" href="{{ route('problems.create') }}"
            class="block py-2 pr-4 pl-3 rounded md:p-0 hover:underline @if(Route::currentRouteName() === 'problems.create') current-page @endif">
             New Problem
         </a>
+        @endif
         <div>
             @foreach($problems as $problem)
                 @if($problem->problem_status_id != null and old('status', $problem->problem_status_id) == 1)
@@ -18,6 +20,7 @@
                         {{ $problem->id }} : {{ $problem->problem_description }}
 
                     </h5>
+                    @if(Auth::user()->role == 'EMPLOYEE')
                     <form action="{{ route('problems.updatestatus', $problem->id)}}" method="post">
                         @csrf
                         <select name ="status" id="status" class="form-control border-gray-300 relative z-0 mb-6 w-1/4 group">
@@ -33,6 +36,7 @@
                             <button type="submits" class="button border border-gray-200 bg-white-200 py-2 px-2 rounded">บันทึกสถานะ</button>
                         </div>
                     </form>
+                    @endif
                 </a>
                 @elseif($problem->problem_status_id != null and old('status', $problem->problem_status_id) == 2)
                     <a class="block p-6 w-full bg-green-200 rounded-lg border border-gray-200 shadow-md  my-4">

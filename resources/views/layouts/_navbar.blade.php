@@ -51,13 +51,14 @@
                 </a>
             </li>
             </li>
+                        @endif
                 <li>
                     <a href="{{ route('problems.index') }}"
                     class="text-xl font-semibold block py-2 pr-4 pl-3 rounded md:p-0 hover:underline @if(Route::currentRouteName() === 'problems.index') current-page @endif" >
                     Problems
                 </a>
             </li>
-                    @endif
+
                 <li class="text-xl font-semibold">
                     {{ Auth::user()->email }}
                 </li>
